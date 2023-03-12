@@ -329,6 +329,9 @@ const Container = styled.div`
  
   display:flex;
 
+  @media (min-width: 300px )and (max-width : 1400px){
+    flex-direction:column;
+  }
  
 `;
 

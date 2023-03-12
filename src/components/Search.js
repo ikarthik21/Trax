@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import json from './movies.json';
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
+// import PhoneNav from './PhoneNav';
 const Search = () => {
   const [movies, setMovies] = useState([]);
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
+  // const isMobile = window.innerWidth < 880;
+  const search="";
+  const [maxWidth, setMaxWidth] = useState(window.innerWidth);
+ 
   useEffect(() => {
 
     const movies = Object.values(json[0]).map((movie) => ({
@@ -18,17 +23,26 @@ const Search = () => {
       movie_trailer: movie.movie_trailer
     }));
     setMovies(movies);
+    const handleResize = () => {
+      setMaxWidth(window.innerWidth);
+    };
 
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
     <>
       <Container>
-        <Navbar />
+   
+      {/* {isMobile ? <PhoneNav /> : <Navbar />} */}
 
         <AllComponents>
           <SearchBox>
-            <input type="text" onChange={(e) => setSearch(e.target.value)} placeholder="Search for a Movie......" />
+            {/* <input type="text" onChange={(e) => setSearch(e.target.value)} placeholder="Search for a Movie......" /> */}
           </SearchBox>
           <VideoRow>
 
@@ -38,7 +52,7 @@ const Search = () => {
               movies.filter((movie) => movie.movie_name.toLowerCase().startsWith(search.toLowerCase())).map((movie, index) => (
                 <Slink to={"/movie/" + movie.movie_id} key={movie.movie_id} >
 
-                  <VideoItem id={movie.movie_id}>
+                  <VideoItem id={movie.movie_id}  maxWidth={maxWidth}>
                     <img src={movie.movie_img} alt="" />
 
 
@@ -71,6 +85,11 @@ const Container = styled.section`
 padding : 20px 20px;
  margin-left: 100px;
  margin-top: 30px;
+  @media (min-width: 190px )and (max-width : 480px){
+    
+    margin-left: 0px;
+    padding : 0px 0px;
+   }
 
 `
 
@@ -92,7 +111,11 @@ align-items:center;
 justify-content:center;
 margin : 10px 10px;
 flex-wrap :wrap;
- 
+@media (min-width: 190px )and (max-width : 880px){
+    
+  margin : 0px 0px;
+  padding : 0px 0px;
+ }
  
 `
 
@@ -124,6 +147,19 @@ z-index:0;
  color:white;
  
  
+
+ @media (min-width: 300px )and (max-width : 480px){
+  
+  img{
+    height: 200px;
+    max-width: ${props =>props.maxWidth - 30}px;
+   
+  }
+  
+ 
+ max-width: ${props => props.maxWidth}px;
+ }
+ 
  
 
 
@@ -140,7 +176,15 @@ h1{
  margin-bottom: 4px;
 }
 max-width: 350px;
+@media (min-width: 190px )and (max-width : 330px){
+  
+  max-width: 280px;
+ }
  
+@media (min-width: 330px )and (max-width : 480px){
+  
+  max-width: 350px;
+ }
  
 `
 
@@ -171,10 +215,11 @@ margin:15px 400px;
 
   
   
-   @media (min-width: 190px )and (max-width : 500px){
+  //  @media (min-width: 190px )and (max-width : 300px){
     
-    width: 55vw;
-   }
+  //   width: 100px;
+  //   margin:15px 40px;
+  //  }
 
 
 
