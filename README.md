@@ -55,7 +55,7 @@ Start the server
  
 ![App Screenshot](https://i.ibb.co/qgtjpGS/3.png)
  
-![App Screenshot](https://i.ibb.co/5T19qjy/5.jpg)
+![App Screenshot](https://i.ibb.co/ZMFNnc2/10.png)
 
  
  
