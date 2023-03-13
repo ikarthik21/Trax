@@ -2,83 +2,77 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import json from './movies.json';
-// import Navbar from './Navbar';
-
-
-import '../App.css';
-
-
+import Navbar from './Navbar';
+import PhoneNav from './PhoneNav';
+const isMobile = window.innerWidth < 880;
+  
 const Home = () => {
-  const [movies, setMovies] = useState([]);
-  const [maxWidth, setMaxWidth] = useState(window.innerWidth);
+    const [movies, setMovies] = useState([]);
+    const [maxWidth, setMaxWidth] = useState(window.innerWidth);
 
 
 
-  useEffect(() => {
+    useEffect(() => {
+
+        const movies = Object.values(json[0]).map((movie) => ({
+            movie_id: movie.movie_id,
+            movie_name: movie.movie_name,
+            movie_director: movie.movie_director,
+            movie_release: movie.movie_release,
+            movie_genre: movie.movie_genre,
+            movie_img: `https://i.ytimg.com/vi/${movie.movie_trailer}/hqdefault.jpg`,
+            movie_trailer: movie.movie_trailer
+        }));
+        setMovies(movies);
+        const handleResize = () => {
+            setMaxWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    return (
+        <>
+            <Container>
+            {isMobile ? <PhoneNav /> : <Navbar />}
 
 
+                <AllComponents>
+                    <VideoRow>
+                        {
+                            movies.map((val) => (
 
-    const movies = Object.values(json[0]).map((movie) => ({
-      movie_id: movie.movie_id,
-      movie_name: movie.movie_name,
-      movie_director: movie.movie_director,
-      movie_release: movie.movie_release,
-      movie_genre: movie.movie_genre,
-      movie_img: `https://i.ytimg.com/vi/${movie.movie_trailer}/hqdefault.jpg`,
-      movie_trailer: movie.movie_trailer
-    }));
-    setMovies(movies);
-    const handleResize = () => {
-      setMaxWidth(window.innerWidth);
-    };
+                                    <Link to={`/movie/${val.movie_id}`} key={val.movie_id} style={{ textDecoration: "none" }}>
+                                        <VideoItem id={val.movie_id} maxWidth={maxWidth}>
 
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-
-  }, []);
-
-  return (
-    <>
-      <Container>
-        {/* <Navbar /> */}
-
-        <AllComponents>
-          <VideoRow>
-            {
-              movies.map((val) => (
-
-                <Link to={`/movie/${val.movie_id}`} key={val.movie_id} style={{ textDecoration: "none" }}>
-                  <VideoItem id={val.movie_id} maxWidth={maxWidth}>
-
-                    <img src={val.movie_img} alt="" />
+                                            <img src={val.movie_img} alt="" />
 
 
-                    <VideoDetails>
-                      <h2 className='applyFont'> {val.movie_name}</h2>
-                      <h1>  {val.movie_release}</h1>
-                      <h1>Directed by {val.movie_director}</h1>
+                                            <VideoDetails>
+                                                <h2 className='applyFont'> {val.movie_name}</h2>
+                                                <h1>  {val.movie_release}</h1>
+                                                <h1>Directed by {val.movie_director}</h1>
 
-                    </VideoDetails>
+                                            </VideoDetails>
 
-                  </VideoItem>
-                </Link>
+                                        </VideoItem>
+                                    </Link>
 
-              ))}
+                                ))}
 
-          </VideoRow>
+                    </VideoRow>
 
 
-        </AllComponents>
-
-      </Container>
-    </>
-  );
+                </AllComponents>
+            </Container>
+        </>
+    );
 };
 export default Home;
-
 
 
 const Container = styled.section`
@@ -90,7 +84,6 @@ padding : 20px 20px;
   margin-left: 0px;
   padding : 0px 0px;
  }
-
 `
 
 
@@ -101,12 +94,13 @@ const AllComponents = styled.div`
 
 const VideoRow = styled.div`
 padding : 10px 10px;
+ 
 display:flex;
 align-items:center;
 justify-content:center;
 margin : 10px 10px;
 flex-wrap :wrap;
- @media (min-width: 190px )and (max-width : 880px){
+@media (min-width: 190px )and (max-width : 480px){
     
   margin : 0px 0px;
   padding : 0px 0px;
@@ -140,11 +134,12 @@ background-color:#1c1b1bd9;
 }
 z-index:0;
  color:white;
+
  @media (min-width: 300px )and (max-width : 480px){
   
   img{
     height: 200px;
-    max-width: ${props => props.maxWidth - 30}px;
+    max-width: ${props =>props.maxWidth - 30}px;
    
   }
   
@@ -154,10 +149,15 @@ z-index:0;
  
  
 
+ 
+ 
+ 
+
 
 `
 
 const VideoDetails = styled.div`
+ 
 padding: 10px 10px;
 h1{
   display:flex;

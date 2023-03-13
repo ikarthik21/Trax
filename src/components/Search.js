@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import json from './movies.json';
-// import Navbar from './Navbar';
-// import PhoneNav from './PhoneNav';
+import Navbar from './Navbar';
+import PhoneNav from './PhoneNav';
 const Search = () => {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
-  // const isMobile = window.innerWidth < 880;
+  const isMobile = window.innerWidth < 880;
   
   const [maxWidth, setMaxWidth] = useState(window.innerWidth);
 
@@ -38,7 +38,7 @@ const Search = () => {
     <>
       <Container>
 
-        {/* {isMobile ? <PhoneNav /> : <Navbar />} */}
+        {isMobile ? <PhoneNav /> : <Navbar />}
 
         <AllComponents>
           <SearchBox>

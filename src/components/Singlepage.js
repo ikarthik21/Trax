@@ -8,8 +8,10 @@ import { RiWhatsappFill } from 'react-icons/ri';
 import '../App.css'
 import Recomm from "./Recomm";
 import axios from 'axios';
+import PhoneNav from './PhoneNav';
 
-
+const isMobile = window.innerWidth < 880;
+  
 const SinglePage = (props) => {
   const [url, setUrl] = useState('');
   const [Video, setVideo] = useState({});
@@ -141,7 +143,7 @@ const SinglePage = (props) => {
           src={`https://www.youtube.com/embed/${Data.movie_trailer}?autoplay=1`}
           frameBorder='0' title={Data.movie_id}
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen style={{ borderRadius: '20px', marginTop: '20px' }}
+          allowFullScreen className="frameStyle"
 
         />
         <DetailsBox>
@@ -313,6 +315,8 @@ const SinglePage = (props) => {
       <RecommendBox>
         <Recomm />
       </RecommendBox>
+      {isMobile ? <PhoneNav /> : ""}
+
     </Container>
 
   );
@@ -351,7 +355,8 @@ justify-content:space-between;
   flex-direction:column;
  
   align-items:center;
-  margin-top:20px;
+  margin-top:230px;
+
 }
 
 
@@ -378,7 +383,7 @@ z-index:2;
   border-radius:0px;
    iframe{
     flex-direction:column;
-    min-height: 40vh;
+    min-height: 35vh;
     min-width: 93vw;
     position:fixed;
     top:30px;

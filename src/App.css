@@ -13,14 +13,14 @@
 body {
 
     background-color: #0f0f0f;
-
+    /* background-color:#838181; */
 
     color: white;
 }
 
 
 .shadowBox {
-    box-shadow: 2px 2px 18px -7px rgba(254, 180, 180, 0.68);
+    box-shadow: 2px 2px 18px -7px #feb4b4ad;
     -webkit-box-shadow: 2px 2px 17px -7px rgba(254, 180, 180, 0.68);
     -moz-box-shadow: 2px 2px 18px -7px rgba(254, 180, 180, 0.68);
 }
@@ -51,4 +51,9 @@ body::-webkit-scrollbar-thumb {
     background-color: #e93e3e;
     border-radius: 55px;
 
+}
+
+.frameStyle{
+ border-radius: 20px;
+margin-top: 20px;
 }

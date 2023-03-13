@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import json from '../movies.json';
-// import Navbar from '../Navbar';
-
+import Navbar from '../Navbar';
+import PhoneNav from '../PhoneNav';
 const Love = () => {
     const [movies, setMovies] = useState([]);
     const [maxWidth, setMaxWidth] = useState(window.innerWidth);
-
+ const isMobile = window.innerWidth < 880;
+  
 
 
     useEffect(() => {
@@ -36,7 +37,8 @@ const Love = () => {
     return (
         <>
             <Container>
-                {/* <Navbar /> */}
+              
+        {isMobile ? <PhoneNav /> : <Navbar />}
 
                 <AllComponents>
                     <VideoRow>
