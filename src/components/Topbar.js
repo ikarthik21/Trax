@@ -95,7 +95,7 @@ padding: 6px 10px;
  position :fixed;
 top:0;
 left:0;
-z-index:2;
+z-index:5;
  
 `
 
@@ -189,7 +189,7 @@ align-items:center;
 
 const FetchedNotfications = styled.div`
  
-   border-radius: 5px;
+   border-radius: 10px;
    position:absolute;
    top:45px;
    right:150px;
@@ -212,7 +212,13 @@ const FetchedNotfications = styled.div`
     background-color:  #e93e3e;
     border-radius: 55px; 
     color: red;
- }
+ } 
+ 
+ @media (min-width: 300px )and (max-width : 600px){
+    top:50px;
+    right:30px;
+    max-width : 380px;
+}
 
 
   

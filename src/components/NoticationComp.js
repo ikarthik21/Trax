@@ -86,7 +86,9 @@ z-index:0;
 color:white;
  display :flex;
  min-width : 390px;
- 
+ @media (min-width: 280px )and (max-width : 500px){
+    min-width : 340px;
+  }
  
  
 

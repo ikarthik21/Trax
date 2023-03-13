@@ -6,11 +6,11 @@ import json from './movies.json';
 // import PhoneNav from './PhoneNav';
 const Search = () => {
   const [movies, setMovies] = useState([]);
-  // const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   // const isMobile = window.innerWidth < 880;
-  const search="";
+  
   const [maxWidth, setMaxWidth] = useState(window.innerWidth);
- 
+
   useEffect(() => {
 
     const movies = Object.values(json[0]).map((movie) => ({
@@ -37,12 +37,12 @@ const Search = () => {
   return (
     <>
       <Container>
-   
-      {/* {isMobile ? <PhoneNav /> : <Navbar />} */}
+
+        {/* {isMobile ? <PhoneNav /> : <Navbar />} */}
 
         <AllComponents>
           <SearchBox>
-            {/* <input type="text" onChange={(e) => setSearch(e.target.value)} placeholder="Search for a Movie......" /> */}
+            <input type="text" onChange={(e) => setSearch(e.target.value)} placeholder="Search for a Movie......" />
           </SearchBox>
           <VideoRow>
 
@@ -52,7 +52,7 @@ const Search = () => {
               movies.filter((movie) => movie.movie_name.toLowerCase().startsWith(search.toLowerCase())).map((movie, index) => (
                 <Slink to={"/movie/" + movie.movie_id} key={movie.movie_id} >
 
-                  <VideoItem id={movie.movie_id}  maxWidth={maxWidth}>
+                  <VideoItem id={movie.movie_id} maxWidth={maxWidth}>
                     <img src={movie.movie_img} alt="" />
 
 
@@ -152,7 +152,7 @@ z-index:0;
   
   img{
     height: 200px;
-    max-width: ${props =>props.maxWidth - 30}px;
+    max-width: ${props => props.maxWidth - 30}px;
    
   }
   
@@ -215,12 +215,16 @@ margin:15px 400px;
 
   
   
-  //  @media (min-width: 190px )and (max-width : 300px){
-    
-  //   width: 100px;
-  //   margin:15px 40px;
-  //  }
-
-
-
+@media (min-width: 300px )and (max-width : 480px){
+  margin:15px 40px;
+  margin-top: 100px;
+  
+  width: 85vw;
+ }
+ 
+@media (min-width: 480px )and (max-width : 900px){
+  margin:15px 40px;
+  width: 65vw;
+ }
+ 
 `;

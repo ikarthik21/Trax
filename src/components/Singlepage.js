@@ -147,7 +147,7 @@ const SinglePage = (props) => {
         <DetailsBox>
 
           <div>
-            <h3>{Video.title}</h3>
+            <h3 style={{lineHeight:'28px'}}>{Video.title}</h3>
           </div>
 
           <StatsBox>
@@ -328,11 +328,9 @@ const Container = styled.div`
   padding: 0 calc(1.5vw + 5px);
  
   display:flex;
-
-  @media (min-width: 300px )and (max-width : 1400px){
-    flex-direction:column;
-  }
- 
+  @media (min-width: 300px )and (max-width : 1500px){
+          flex-direction:column;    
+   }
 `;
 
 const StatsBox = styled.div`
@@ -344,8 +342,19 @@ background-color:#1c1b1bd9;
 padding: 10px 20px;
 border-radius:18px;
 display:flex;
-margin-top:10px;
+margin-top:20px;
+  
+
+flex-wrap:wrap;
 justify-content:space-between;
+@media (min-width: 280px )and (max-width : 500px){
+  flex-direction:column;
+ 
+  align-items:center;
+  margin-top:20px;
+}
+
+
 
 `
 
@@ -354,32 +363,36 @@ const TrailerBox = styled.div`
  diplay:flex;
  align-items:center; 
  justify-content:center;
-
  iframe{
   margin-top: 15px;
-  width: 65vw;
-    height: 80vh;
-    objectFit: fill;
+  min-width: 100%;
+    min-height: 80vh;
+    // objectFit: fill;
     z-index: 0;
- } 
+   } 
+z-index:2;
+
+
  
- @media (min-width: 800px )and (max-width : 1200px){
-  iframe{
-    width: 75vw;
-      height:75vh;
-      objectFit: fill;
+ @media (min-width: 300px )and (max-width : 600px){
+  border-radius:0px;
+   iframe{
+    flex-direction:column;
+    min-height: 40vh;
+    min-width: 93vw;
+    position:fixed;
+    top:30px;
+    left:0px;
+     width:99vw;
+     border-radius:0px;
    }
-  }
+ 
 
-   @media (min-width: 190px )and (max-width : 500px){
-    iframe{
-      width:  100vw;
-        height: 45vh;
-        objectFit: fill;
-     }
-}
+ }
+ 
 
 
+ 
 `
 
 const DetailsBox = styled.div`
@@ -391,32 +404,36 @@ flex-wrap:wrap;
  
 flex-direction :column;
 h3{
+  
   font-size:20px;
   font-family: 'Golos Text', sans-serif;
+   margin :4px; 
 }
 p{
   display:flex;
   flex-direction:column;
+ 
 }
 
- 
 
+ 
 `
 
 const DescToggle = styled.div`
 margin: 10px 0px;
 h4{
-
   font-family:monospace;
   font-size:20px;
   color:lightblue;
   cursor:pointer;
   display:inline;
 }
-
+ 
 `
 
 const RecommendBox = styled.div`
+
+
 
 
 `
@@ -433,8 +450,6 @@ a{
   text-decoration:none;
 }
 
- 
-
 `
 const LikesBox = styled.div`
 display:flex;
@@ -442,6 +457,13 @@ background-color:#1c1b1bd9;
 padding: 10px 20px;
 border-radius:18px;
 justify-conten:space-between;
+@media (min-width: 300px )and (max-width : 500px){
+ flex-direction:column;
+ 
+
+}
+
+
 `
 
 
@@ -455,7 +477,6 @@ h3{
   margin-left:7px;
   font-size:16px;
 }
-
 `
 
 const CommentsBox = styled.div`
@@ -464,16 +485,25 @@ margin: 18px 0px;
 padding: 15px 20px;
 border-radius:18px;
 
+ 
+display:flex;
+flex-direction:column;
+flex-wrap:wrap;
 `
 
 const CommentUserBox = styled.div`
-// background-color:pink;
-padding: 10px 100px;
  
+padding: 10px 100px;
+@media (min-width: 300px )and (max-width : 500px){
+  
+    padding: 10px 15px;
+ }
 
+
+
+ 
 `
 const UserBox = styled.div`
-
 display:flex;
 align-items:center;
 img{
@@ -481,13 +511,11 @@ img{
   width:40px;
   border-radius:150px;
 }
-
 h3{
   margin-left:10px;
   
 }
 margin:5px 5px;
-
 `
 
 const CommentContent = styled.div`
@@ -501,20 +529,14 @@ margin:8px 5px;
 p{
   font-size:16px;
 }
-
-
 `
 
 const CommentItem = styled.div`
-
 display:flex;
 flex-direction:column;
-
 h3{
   font-size:19px;
   color:whitesmoke;
 }
-
-
 `
 export default SinglePage;

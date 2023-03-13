@@ -87,8 +87,10 @@ background-color:#1c1b1bd9;
 z-index:0;
 color:white;
  display :flex;
- min-width : 390px;
- 
+ min-width : 390px; 
+ @media (min-width: 300px )and (max-width : 600px){
+ min-width : 390px; 
+}
  
  
 
