@@ -45,17 +45,17 @@ Start the server
 ## Screenshots
  
 
-![App Screenshot](https://i.ibb.co/SKj7nqR/2.png)
+![App Screenshot](Screenshots/2.png)
 
  
-![App Screenshot](https://i.ibb.co/wJM036M/1.png)
+![App Screenshot](Screenshots/1.png)
 
  
-![App Screenshot](https://i.ibb.co/PgntR7p/4.png)
+![App Screenshot](Screenshots/4.png)
  
-![App Screenshot](https://i.ibb.co/qgtjpGS/3.png)
+![App Screenshot](Screenshots/3.png)
  
-![App Screenshot](https://i.ibb.co/ZMFNnc2/10.png)
+![App Screenshot](Screenshots/5.png)
 
  
  
