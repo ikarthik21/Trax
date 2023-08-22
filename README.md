@@ -2,7 +2,7 @@
 
 ### Live On
 
-https://trax-kk.onrender.com/
+https://traxk.vercel.app/
 
 #### Demo Video
 https://youtu.be/fKjd732pvM0
